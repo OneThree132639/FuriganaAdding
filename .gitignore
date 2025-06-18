@@ -1,0 +1,52 @@
+# Python 编译/缓存文件
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.py~
+
+# 虚拟环境
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE 相关文件
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.pydevproject
+.DS_Store
+*.swp
+*.swo
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+*.pid
+*.seed
+*.sess
+
+# 操作系统自动生成的文件
+Thumbs.db
+desktop.ini
+
+# 构建输出目录（如果你打算用 PyInstaller 等打包）
+dist/
+build/
+__pyinstaller__
+
+# 用户数据或配置文件（避免提交敏感信息）
+*.ini
+*.cfg
+*.conf
+
+# Excel 输出文件（如果你不希望提交 out.txt）
+/data/out.txt
+
+# 图标生成中间文件（如果你有脚本生成图标）
+/resource/icon_*.png
