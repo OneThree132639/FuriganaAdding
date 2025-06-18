@@ -51,7 +51,7 @@ all: clean build
 generate:
 	if [ "$(OS)" = "MACOS" ]; then \
 		python3 $(RESOURCE_DIR)/generate_icons.py; \
-		iconutil -c icns myicon.iconset; \
+		iconutil -c icns $(RESOURCE_DIR)/myicon.iconset; \
 	elif [ "$(OS)" = "WINDOWS" ]; then \
 		python3 $(RESOURCE_DIR)/generate_ico.py; \
 	fi
