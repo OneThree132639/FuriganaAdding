@@ -49,3 +49,4 @@ __pyinstaller__
 /resource/icon_*.png
 
 tree.py
+issue.txt
