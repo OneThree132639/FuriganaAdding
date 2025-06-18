@@ -46,7 +46,7 @@ PYINSTALLER_OPTS += \
 	--distpath $(DIST_DIR) \
 	--workpath $(BUILD_DIR) \
 
-all: clean build
+all: build
 
 generate:
 	if [ "$(OS)" = "MACOS" ]; then \
