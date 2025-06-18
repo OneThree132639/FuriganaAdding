@@ -497,7 +497,7 @@ class Addition:
     def keiyou(self, new_line, j, term):
         temp = simplify(term[0])
         gobi = ['い','かった','く','ければ','がる','がり','がら',
-                'がれ','がろ','がっ','げ','さ','すぎ','過ぎ']
+                'がれ','がろ','がっ','げ','さ','すぎ','過ぎ', "そう"]
         for i in range(len(gobi)):
             if (new_line[j:j+len(temp)-1] == temp[:-1] and
                 new_line[j+len(temp)-1:j+len(temp)-1+len(gobi[i])] == gobi[i]):

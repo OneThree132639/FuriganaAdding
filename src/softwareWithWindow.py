@@ -99,13 +99,13 @@ class SearchWindow(QWidget):
                     dic.delete(index)
                     main_window = self.window()
 
-                if isinstance(main_window, MainWindow):
-                    setting_viewer = main_window.setting_viewer
-                try:
-                    backup_dic = FAP.Dictionary(setting_viewer.backup_dic_path.line_edit.text())
-                    backup_dic.savedf(df)
-                except:
-                    pass
+                    if isinstance(main_window, MainWindow):
+                        setting_viewer = main_window.setting_viewer
+                    try:
+                        backup_dic = FAP.Dictionary(setting_viewer.backup_dic_path.line_edit.text())
+                        backup_dic.savedf(df)
+                    except:
+                        pass
 
                     self.informText.setText("删除成功!")
                 else:
