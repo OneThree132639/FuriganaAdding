@@ -45,8 +45,7 @@ __pyinstaller__
 *.cfg
 *.conf
 
-# Excel 输出文件（如果你不希望提交 out.txt）
-/data/out.txt
-
 # 图标生成中间文件（如果你有脚本生成图标）
 /resource/icon_*.png
+
+tree.py
