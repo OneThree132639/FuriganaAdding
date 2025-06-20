@@ -403,9 +403,9 @@ class Addition:
             dic_index = 0
             if new_text[i:i+2] == "${":
                 new_text = new_text[:i]+new_text[i+2:]
-                while new_text[i]!="}":
+                while new_text[i:i+2]!="}$" and i<len(new_text):
                     i+=1
-                new_text = new_text[:i]+new_text[i+1:]
+                new_text = new_text[:i]+new_text[i+2:]
                 continue
             if new_text[i] == "$":
                 new_text = new_text[:i]+new_text[i+1:]
