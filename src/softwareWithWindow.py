@@ -283,13 +283,16 @@ class OutTextWindow(QWidget):
         self.text_edit = QTextEdit()
         self.update_outtext()
         self.button_update = QPushButton("刷新输出文档")
+        self.text_saver = CPQ.TextSaver("另存为txt文件")
         newtermwindow = NewTermWindow()
-        layout = QHBoxLayout()
-        layout.addWidget(self.button_update)
-        layout.addWidget(self.text_edit)
-        layout.addWidget(newtermwindow)
+        layout = QGridLayout()
+        layout.addWidget(self.button_update, 2, 0)
+        layout.addWidget(self.text_saver, 3, 0)
+        layout.addWidget(self.text_edit, 0, 1, 6, 1)
+        layout.addWidget(newtermwindow, 0, 2, 6, 1)
 
         self.button_update.clicked.connect(self.update_outtext)
+        self.text_saver.set_content_reader(self.content_reader)
 
         self.setLayout(layout)
 
@@ -308,6 +311,9 @@ class OutTextWindow(QWidget):
             addition.operation(outtext=backup_outtext)
         except:
             pass
+
+    def content_reader(self):
+        return self.text_edit.toPlainText()
 
 class SettingWindow(QWidget):
     def __init__(self, parent=None):
