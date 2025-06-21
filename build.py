@@ -74,7 +74,8 @@ def generate():
 def venv():
 	print("Creating virtual environment...")
 	run([sys.executable, "-m", "venv", VENV_DIR])
-	pip_path = os.path.join(VENV_DIR, "Scripts" if OS_TYPE=="WINDOWS" else "bin", "pip")
+	pip_path = os.path.join(VENV_DIR, "Scripts" if OS_TYPE=="WINDOWS" else "bin",
+						 "pip.exe" if OS_TYPE=="WINDOWS" else "pip")
 	run([pip_path, "install", "-r", "requirements.txt"])
 
 def build():
@@ -121,7 +122,7 @@ def clean():
 				os.remove(match)
 	
 	if os.path.exists(VENV_DIR):
-		shutil.rmtree(match, ignore_errors=True)
+		shutil.rmtree(VENV_DIR, ignore_errors=True)
 
 def help():
 	print("""
