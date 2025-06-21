@@ -11,6 +11,9 @@ from PyQt5.QtGui import (
 from PyQt5.QtCore import Qt
 import json
 
+def BlankFunction():
+	pass
+
 class SettingJson:
 	def __init__(self, appname):
 		self.CONFIG_DIR = self.get_config_dir(appname)
@@ -101,7 +104,7 @@ class CustomButton(NavigableMixin, QPushButton):
 		background-color: #0060E4;
 		color: white;
 		}'''
-		self.on_click = self.BlankFunction
+		self.on_click = BlankFunction
 
 	def keyPressEvent(self, event):
 		if event.type()==event.KeyPress:
@@ -125,9 +128,6 @@ class CustomButton(NavigableMixin, QPushButton):
 	def on_click_func(self):
 		self.on_click()
 		self.clearFocus()
-
-	def BlankFunction(self):
-		pass
 
 	def setCursorToEdge(self, dx):
 		pass
@@ -271,3 +271,40 @@ class FilePicker(QWidget):
 	
 	def set_path(self, path):
 		self.line_edit.setText(path)
+
+class TextSaver(QWidget):
+	def __init__(self, text="", filetype=FileType.text, parent=None):
+		super().__init__(parent)
+		layout = QGridLayout()
+		self.button = QPushButton(text)
+		self.filetype = filetype
+		self.content_reader = BlankFunction
+		layout.addWidget(self.button, 0, 0)
+
+		self.button.clicked.connect(self.save_text)
+		self.setLayout(layout)
+
+	def set_content_reader(self, func):
+		self.content_reader = func
+
+	def save_text(self):
+		content = self.content_reader()
+
+		options = QFileDialog.Options()
+		file_name, _ = QFileDialog.getSaveFileName(
+			self,
+			"保存文件",
+			"",
+			self.filetype,
+			options=options
+		)
+
+		if file_name:
+			try:
+				if not file_name.endswith(".txt"):
+					file_name += ".txt"
+
+				with open(file_name, "w", encoding="utf-8") as f:
+					f.write(content)
+			except Exception as e:
+				print("[TextSaver]: ", e)
