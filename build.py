@@ -17,7 +17,7 @@ BUILD_DIR = "build"
 OS = platform.system()
 if OS=="Darwin":
 	OS_TYPE = "MACOS"
-elif OS.startswith("MINGW"):
+elif OS.startswith("MINGW") or OS=="Windows":
 	OS_TYPE = "WINDOWS"
 else:
 	OS_TYPE = "LINUX"
