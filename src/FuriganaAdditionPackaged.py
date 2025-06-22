@@ -361,13 +361,13 @@ class InText():
         self.file_address = in_text_path
 
     def read_text(self):
-        file = open(self.file_address, mode='r')
+        file = open(self.file_address, mode='r', encoding="utf-8")
         text = file.read()
         file.close()
         return text
     
     def write_text(self, text):
-        file = open(self.file_address, mode='w')
+        file = open(self.file_address, mode='w', encoding="utf-8")
         file.write(text)
         file.close()
 
@@ -376,13 +376,13 @@ class OutText():
         self.file_address = out_text_path
         
     def read_text(self):
-        file = open(self.file_address, mode='r')
+        file = open(self.file_address, mode='r', encoding="utf-8")
         text = file.read()
         file.close()
         return text
     
     def write_text(self, text):
-        file = open(self.file_address, mode='w')
+        file = open(self.file_address, mode='w', encoding="utf-8")
         file.write(text)
         file.close()
 
