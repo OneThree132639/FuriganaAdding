@@ -40,26 +40,26 @@
 
 ### Windows用户（待反馈）
 请在终端中打开项目文件夹（FuriganaAdding）
-在终端中运行命令`make generate`以生成图标
-在终端中运行命令`make venv`以生成虚拟环境
-在终端中运行命令`make`以生成应用程序
+在终端中运行命令`python3 build.py venv`以生成虚拟环境
+在终端中运行命令`python3 build.py generate`以生成图标
+在终端中运行命令`python3 build.py build`以生成应用程序
 如果过程顺利，你可以在生成的`dist`文件夹中找到名为`Furigana.exe`的程序
-双击该应用程序，或者回到项目文件夹并运行`make run`即可打开应用程序
+双击该应用程序，或者回到项目文件夹并运行`python3 build.py run`即可打开应用程序
 
 ### MacOS用户
 请在终端中打开项目文件夹（FuriganaAdding）
-在终端中运行命令`make generate`以生成图标
-在终端中运行命令`make venv`以生成虚拟环境
-在终端中运行命令`make`以生成应用程序
+在终端中运行命令`python3 build.py venv`以生成虚拟环境
+在终端中运行命令`python3 build.py generate`以生成图标
+在终端中运行命令`python3 build.py build`以生成应用程序
 如果过程顺利，你可以在生成的`dist`文件夹中找到名为`Furigana.app`的程序
-双击该应用程序，或者回到项目文件夹并运行`make run`即可打开应用程序
+双击该应用程序，或者回到项目文件夹并运行`python3 build.py run`即可打开应用程序
 
 ### Linux用户（待反馈）
 请在终端中打开项目文件夹（FuriganaAdding）
-在终端中运行命令`make venv`以生成虚拟环境
-在终端中运行命令`make`以生成应用程序
+在终端中运行命令`python3 build.py venv`以生成虚拟环境
+在终端中运行命令`python3 build.py build`以生成应用程序
 如果过程顺利，你可以在生成的`dist`文件夹中找到名为`Furigana`的程序
-双击该应用程序，或者回到项目文件夹并运行`make run`即可打开应用程序
+双击该应用程序，或者回到项目文件夹并运行`python3 build.py run`即可打开应用程序
 
 ## 关于合法输入与合法分割
 
