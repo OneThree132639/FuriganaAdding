@@ -96,7 +96,13 @@ class CustomButton(NavigableMixin, QPushButton):
 		NavigableMixin.__init__(self, row, col)
 		self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-		self.defalut_style = self.styleSheet()
+		self.defalut_style = '''QPushButton {
+		border: 0.2px solid white;
+		border-radius: 5px;
+		padding: 2px;
+		background-color: white;
+		color: black;
+		}'''
 		self.focused_style = '''QPushButton {
 		border: 0.2px solid white;
 		border-radius: 5px;
