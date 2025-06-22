@@ -163,7 +163,7 @@ class JpString(str):
         return len(self)==1 and 12353<=ord(self)<=12436
     
     def isKatakana(self):
-        return len(self)==1 and 12449<=ord(self)<=12538
+        return len(self)==1 and (12449<=ord(self)<=12538 or ord(self)==12540)
     
     def isKana(self):
         return self.isHiragana() or self.isKatakana()
