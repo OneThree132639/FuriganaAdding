@@ -38,19 +38,15 @@ PYINSTALLER_OPTS = [
 	"--hidden-import=pandas.io.excel._openpyxl",
 ]
 
-def run(cmd):
-	print("Running: {}".format(" ".join(cmd)))
-	subprocess.run(cmd, check=True)
+VENV_SITE_PACKAGES = None
 
-def detect_pyinstaller():
-	if OS_TYPE=="WINDOWS":
-		return os.path.join(VENV_DIR, "Scripts", "pyinstaller")
-	else:
-		return os.path.join(VENV_DIR, "bin", "pyinstaller")
+def get_venv_site_packages():
+	global VENV_SITE_PACKAGES
+	if VENV_SITE_PACKAGES is not None:
+		return VENV_SITE_PACKAGES
 	
-def detect_pyqt5_plugins():
 	if OS_TYPE=="WINDOWS":
-		return os.path.join(VENV_DIR, "Lib", "site-packages", "PyQt5", "Qt", "plugins")
+		VENV_SITE_PACKAGES = os.path.join(VENV_DIR, "Lib", "site-packages")
 	else:
 		venv_python = os.path.join(VENV_DIR, "bin", "python")
 		cmd = [
@@ -59,12 +55,33 @@ def detect_pyqt5_plugins():
 			"import site; print(site.getsitepackages()[0])"
 		]
 		result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-		site_packages = result.stdout.strip()
-		return os.path.join(site_packages, "PyQt5", "Qt5", "plugins")
+		VENV_SITE_PACKAGES = result.stdout.strip()
+
+	return VENV_SITE_PACKAGES
+
+def run(cmd):
+	print("Running: {}".format(" ".join(cmd)))
+	subprocess.run(cmd, check=True)
+
+def detect_pyinstaller():
+	if OS_TYPE=="WINDOWS":
+		return os.path.join(VENV_DIR, "Scripts", "pyinstaller.exe")
+	else:
+		return os.path.join(VENV_DIR, "bin", "pyinstaller")
+	
+def detect_pyqt5_plugins():
+	site_packages = get_venv_site_packages()
+	return os.path.join(site_packages, "PyQt5", "Qt5", "plugins")
+
+def detect_python():
+	if OS_TYPE=="WINDOWS":
+		return os.path.join(VENV_DIR, "Scripts", "python.exe")
+	else:
+		return os.path.join(VENV_DIR, "bin", "python")
 	
 def generate():
 	print("Generating icons...")
-	python = sys.executable
+	python = detect_python()
 	if OS_TYPE=="MACOS":
 		run([python, os.path.join(RESOURCE_DIR, "generate_icons.py")])
 		run(["iconutil", "-c", "icns", os.path.join(RESOURCE_DIR, "myicon.iconset")])
